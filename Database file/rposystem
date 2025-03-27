@@ -1,0 +1,286 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 27, 2025 at 10:52 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `rposystem`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rpos_admin`
+--
+
+CREATE TABLE `rpos_admin` (
+  `admin_id` varchar(200) NOT NULL,
+  `admin_name` varchar(200) NOT NULL,
+  `admin_email` varchar(200) NOT NULL,
+  `admin_password` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `rpos_admin`
+--
+
+INSERT INTO `rpos_admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
+('', 'Admin Ronalyn', 'ronalynperez033@gmail.com', '7b4f2904de9bc90ba7b05012c2c50de2b9ab4f02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rpos_customers`
+--
+
+CREATE TABLE `rpos_customers` (
+  `customer_id` varchar(200) NOT NULL,
+  `customer_name` varchar(200) NOT NULL,
+  `customer_phoneno` varchar(200) NOT NULL,
+  `customer_email` varchar(200) NOT NULL,
+  `customer_password` varchar(200) NOT NULL,
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `rpos_customers`
+--
+
+INSERT INTO `rpos_customers` (`customer_id`, `customer_name`, `customer_phoneno`, `customer_email`, `customer_password`, `created_at`) VALUES
+('00116a89ae98', 'Aubrey kate quinonez', '09511972017', 'aubrey@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '2025-03-26 19:05:17.209574'),
+('0ddf355aeebd', 'Dexter Austria', '09765083519', 'dexteraustria@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '2025-03-27 09:49:40.454951'),
+('9d1cd114a9bb', 'Angelica Uy', '09654738272', 'angelica@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '2025-03-26 19:04:58.846222'),
+('aff56a9ff721', 'Jhennymae Panes', '09875465216', 'jhennymae@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '2025-03-26 19:03:16.371659'),
+('c2cd43781a87', 'Sheila Mae Villegas', '09889862529', 'sheilamae@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '2025-03-26 19:04:30.110816'),
+('cfd480ef7a61', 'Andrew Quiambao', '09876543096', 'andrewquiambao@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '2025-03-27 09:48:48.655917'),
+('d40edf2a570c', 'Ronalyn Perez', '09926108352', 'ronalynperez@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '2025-03-27 09:48:08.834768'),
+('d5d61e41d55f', 'John Carlo Elias', '09309876540', 'eliasjohn@gmail.com', 'b9ee418076632de7b3cc62b329ba04e1f5c5f9da', '2025-03-27 05:59:19.343470');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rpos_orders`
+--
+
+CREATE TABLE `rpos_orders` (
+  `order_id` varchar(200) NOT NULL,
+  `order_code` varchar(200) NOT NULL,
+  `customer_id` varchar(200) NOT NULL,
+  `customer_name` varchar(200) NOT NULL,
+  `prod_id` varchar(200) NOT NULL,
+  `prod_name` varchar(200) NOT NULL,
+  `prod_price` varchar(200) NOT NULL,
+  `prod_qty` varchar(200) NOT NULL,
+  `order_status` varchar(200) NOT NULL,
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `total_price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `rpos_orders`
+--
+
+INSERT INTO `rpos_orders` (`order_id`, `order_code`, `customer_id`, `customer_name`, `prod_id`, `prod_name`, `prod_price`, `prod_qty`, `order_status`, `created_at`, `total_price`) VALUES
+('078ff8098c', 'ZBSL-4576', 'aff56a9ff721', 'Jhennymae Panes', '0d43027b22', 'Sizzling Sisig', '199', '3', '', '2025-03-27 09:47:09.890312', 0.00),
+('1bfdf60aef', 'GUDQ-5126', 'aff56a9ff721', 'Jhennymae Panes', 'faad4d4b33', 'Chicken Silog', '99', '2', 'Paid', '2025-03-27 04:04:03.952684', 0.00),
+('7457a025c8', 'SXEY-8073', 'd5d61e41d55f', 'John Carlo Elias', 'ae5d26afcc', 'Tocinolog', '99', '4', 'Paid', '2025-03-27 05:59:53.526001', 396.00),
+('80b9395f0d', 'CJMF-2931', 'c2cd43781a87', 'Sheila Mae Villegas', '1ea8f13f5d', 'Sisig Silog', '99', '2', 'Paid', '2025-03-27 04:04:22.969732', 0.00),
+('830a385a66', 'IBHC-0612', '9d1cd114a9bb', 'Angelica Uy', '0d43027b22', 'Sizzling Sisig', '199', '4', 'Paid', '2025-03-27 04:04:32.041027', 0.00),
+('87974001b8', 'MDKX-3260', '9d1cd114a9bb', 'Angelica Uy', 'ef229b1ed8', 'Pancit Canton bilao', '300', '8', 'Paid', '2025-03-27 06:38:29.062420', 2400.00),
+('894f983a75', 'SNWA-6319', '00116a89ae98', 'Aubrey kate quinonez', '31a72aa80c', 'Barbeque Silog', '99', '4', 'Paid', '2025-03-27 04:04:14.510592', 0.00),
+('8a738cdb8c', 'KRXS-3176', 'cfd480ef7a61', 'Andrew Quiambao', '31a72aa80c', 'Barbeque Silog', '99', '5', '', '2025-03-27 09:51:13.242873', 495.00),
+('e60bc4bf60', 'PQTK-7382', '0ddf355aeebd', 'Dexter Austria', '0d43027b22', 'Sizzling Sisig', '199', '4', 'Paid', '2025-03-27 09:50:46.196984', 0.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rpos_pass_resets`
+--
+
+CREATE TABLE `rpos_pass_resets` (
+  `reset_id` int(20) NOT NULL,
+  `reset_code` varchar(200) NOT NULL,
+  `reset_token` varchar(200) NOT NULL,
+  `reset_email` varchar(200) NOT NULL,
+  `reset_status` varchar(200) NOT NULL,
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rpos_payments`
+--
+
+CREATE TABLE `rpos_payments` (
+  `pay_id` varchar(200) NOT NULL,
+  `pay_code` varchar(200) NOT NULL,
+  `order_code` varchar(200) NOT NULL,
+  `customer_id` varchar(200) NOT NULL,
+  `pay_amt` varchar(200) NOT NULL,
+  `pay_method` varchar(200) NOT NULL,
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `rpos_payments`
+--
+
+INSERT INTO `rpos_payments` (`pay_id`, `pay_code`, `order_code`, `customer_id`, `pay_amt`, `pay_method`, `created_at`) VALUES
+('0a63b1', 'HTQO9PMLIR', 'CJMF-2931', 'c2cd43781a87', '198', 'Cash', '2025-03-27 04:04:22.969109'),
+('2c874f', 'J5QBAYNL43', 'GUDQ-5126', 'aff56a9ff721', '198', 'Cash', '2025-03-27 04:04:03.948215'),
+('470229', 'DRFBTXMQ5Z', 'PQTK-7382', '0ddf355aeebd', '796', 'Cash', '2025-03-27 09:50:46.193847'),
+('8fcd3d', 'XJKROEVY7Z', 'SNWA-6319', '00116a89ae98', '396', 'Gcash', '2025-03-27 04:04:14.508477'),
+('932ada', '3SA64H1ZXC', 'SXEY-8073', 'd5d61e41d55f', '396', 'Cash', '2025-03-27 05:59:53.524651'),
+('a5f541', 'W5B8196RV4', 'MDKX-3260', '9d1cd114a9bb', '2400', 'Cash', '2025-03-27 06:38:29.061544'),
+('f50574', 'LOY8CXT76R', 'IBHC-0612', '9d1cd114a9bb', '796', 'Gcash', '2025-03-27 04:04:32.039047');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rpos_products`
+--
+
+CREATE TABLE `rpos_products` (
+  `prod_id` varchar(200) NOT NULL,
+  `prod_code` varchar(200) NOT NULL,
+  `prod_name` varchar(200) NOT NULL,
+  `prod_img` varchar(200) NOT NULL,
+  `prod_desc` longtext NOT NULL,
+  `prod_price` varchar(200) NOT NULL,
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `rpos_products`
+--
+
+INSERT INTO `rpos_products` (`prod_id`, `prod_code`, `prod_name`, `prod_img`, `prod_desc`, `prod_price`, `created_at`) VALUES
+('0d43027b22', 'ENDK-9362', 'Sizzling Sisig', 'siz.webp', '.', '199', '2025-03-27 03:59:29.090658'),
+('1ea8f13f5d', 'CQRF-0835', 'Sisig Silog', 'si.jpg', '.', '99', '2025-03-27 03:56:55.180274'),
+('208c122ce3', 'ODSW-9867', 'Pork Adobo', 'pork-adobo-1-3.jpg', '.', '199', '2025-03-27 04:00:48.388249'),
+('31a72aa80c', 'FRQP-1267', 'Barbeque Silog', 'bbq.jpg', '.', '99', '2025-03-27 03:57:47.272939'),
+('414de5c077', 'BGHJ-3075', 'Bulalo', 'Bulalo-1.jpg', '.', '199', '2025-03-27 03:59:00.516659'),
+('5048d0f2d2', 'JEFY-5293', 'Hotsilog', 'images.jpg', '.', '99', '2025-03-27 03:59:49.891983'),
+('ae5d26afcc', 'JBXS-7053', 'Tocinolog', 'to.jpg', '.\r\n', '99', '2025-03-27 03:57:22.102303'),
+('c73634c16c', 'SIHL-1706', 'Chicken Adobo', 'chicken-adobo-feature-image-500x500.jpg', '.', '199', '2025-03-27 04:01:08.352232'),
+('c853fd2b54', 'UXCS-5108', 'Pancit Bihon Bilao', 'Pancit-Bihon-2.jpg', '.', '300', '2025-03-27 06:37:34.167680'),
+('ef229b1ed8', 'FCDU-7506', 'Pancit Canton bilao', 'Pancit-Canton.jpg', '.', '300', '2025-03-27 06:37:11.970909'),
+('faad4d4b33', 'SZDA-0659', 'Chicken Silog', 'chicksilog.webp', '.', '99', '2025-03-27 04:00:13.967207');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rpos_staff`
+--
+
+CREATE TABLE `rpos_staff` (
+  `staff_id` int(20) NOT NULL,
+  `staff_name` varchar(200) NOT NULL,
+  `staff_number` varchar(200) NOT NULL,
+  `staff_email` varchar(200) NOT NULL,
+  `staff_password` varchar(200) NOT NULL,
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `rpos_staff`
+--
+
+INSERT INTO `rpos_staff` (`staff_id`, `staff_name`, `staff_number`, `staff_email`, `staff_password`, `created_at`) VALUES
+(3, 'Ronalyn Perez', 'KBWT-8079', 'cashierronalyn@gmail.com', '0110c1645610dd919a1f81deb790dab8bc441e4d', '2025-03-27 04:06:04.266856');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `rpos_admin`
+--
+ALTER TABLE `rpos_admin`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `rpos_customers`
+--
+ALTER TABLE `rpos_customers`
+  ADD PRIMARY KEY (`customer_id`);
+
+--
+-- Indexes for table `rpos_orders`
+--
+ALTER TABLE `rpos_orders`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `CustomerOrder` (`customer_id`),
+  ADD KEY `ProductOrder` (`prod_id`);
+
+--
+-- Indexes for table `rpos_pass_resets`
+--
+ALTER TABLE `rpos_pass_resets`
+  ADD PRIMARY KEY (`reset_id`);
+
+--
+-- Indexes for table `rpos_payments`
+--
+ALTER TABLE `rpos_payments`
+  ADD PRIMARY KEY (`pay_id`),
+  ADD KEY `order` (`order_code`);
+
+--
+-- Indexes for table `rpos_products`
+--
+ALTER TABLE `rpos_products`
+  ADD PRIMARY KEY (`prod_id`);
+
+--
+-- Indexes for table `rpos_staff`
+--
+ALTER TABLE `rpos_staff`
+  ADD PRIMARY KEY (`staff_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `rpos_pass_resets`
+--
+ALTER TABLE `rpos_pass_resets`
+  MODIFY `reset_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `rpos_staff`
+--
+ALTER TABLE `rpos_staff`
+  MODIFY `staff_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `rpos_orders`
+--
+ALTER TABLE `rpos_orders`
+  ADD CONSTRAINT `CustomerOrder` FOREIGN KEY (`customer_id`) REFERENCES `rpos_customers` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ProductOrder` FOREIGN KEY (`prod_id`) REFERENCES `rpos_products` (`prod_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
