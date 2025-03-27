@@ -17,7 +17,7 @@ cd restaurant-pos
 2️⃣ Setup the Database
 1. Open phpMyAdmin.
 2.Create a new database, e.g., restaurant_pos.
-3. Import the database.sql file from the project.
+3. Import the rposystem.sql file from the project.
 3️⃣ Configure the Database Connection
 Edit the config/config.php file with your database details:
 *$mysqli = new mysqli("localhost", "root", "", "restaurant_pos");*
